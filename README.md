@@ -54,7 +54,7 @@ If you use transform to move the mobile menu off-screen, you create a new stacki
 
 You can use transform and get the backdrop to not overlap the menu if you limit the backdrop's width.  However, if you have an animation for the side drawer, the user will see that the backdrop does not cover the entire page.  You can add a timeout that matches the transition's length to negate that, but when the user closes the menu -  the backdrop will remain for the timeout's duration.   If you remove the transition animation, it looks harsh but matches design.  
 
-You can toggle the mobile menu without js by using a checkbox, but that creates problems as the checked attribute can only be used in the css if the overlap is a descendant or sibling. 
+You can toggle the mobile menu without js by using a checkbox, but that creates problems as the checked attribute can only be used in the css if the overlap is a descendant or sibling. :has selector can allow you to get around that - body:has(.checkbox:checked).  
 
 You could add a backdrop class to the header and the body in the js script to change the background color.  This creates a problem as the intersection of the header and body shows a very noticeable line.  
 
@@ -64,7 +64,9 @@ You can decide whether you will allow scrolling when the mobile menu is displaye
 
 CSS Layers may help with the z-index issues.
 
-If you add href to mobile nav links, you have to account for header height if you are a using sticky header, otherwise link will overshoot the intended target.  
+Problems come from having to set background color on the header.  Without a background set, the header collapses and without it, the background of the header prevents partial dimming of the header.  Need to assign a fixed height on the nav ? 
+
+If you add href to mobile nav links, you have to account for header height if you are a using sticky header, otherwise link will overshoot the intended target.   
 
 Tough to squeeze the whole desktop design on one page with no scroll.  I think it is better to have so portion of the bottom section rendered so user knows there is more content below.  Also, I did not use specified 15px font size but even that would not help much.  
 
